@@ -1,4 +1,10 @@
 const board = document.querySelector(".board");
+const startButton = document.querySelector(".btn-start");
+const modal = document.querySelector(".modal");
+const startGameModal = document.querySelector(".start-game");
+const gameOverModal = document.querySelector(".game-over");
+const restartButton = document.querySelector(".btn-restart");
+
 const blockWidth = 80;
 const blockHeight = 80;
 
@@ -7,7 +13,7 @@ const rows = Math.floor(board.clientHeight / blockHeight);
 
 const blocks = [];
 
-const snake = [{ x: 1, y: 3 }];
+let snake = [{ x: 1, y: 3 }];
 
 let direction = "down";
 let intervalId = null;
@@ -38,8 +44,10 @@ function render() {
 
   // 2) check wall collision immediately
   if (head.x < 0 || head.x >= rows || head.y < 0 || head.y >= cols) {
-    alert("Game Over");
     clearInterval(intervalId);
+    modal.style.display = "flex";
+    startGameModal.style.display = "none";
+    gameOverModal.style.display = "flex";
     return;
   }
 
@@ -80,10 +88,6 @@ function render() {
   console.log(snake);
 }
 
-// intervalId = setInterval(() => {
-//   render();
-// }, 400);
-
 addEventListener("keydown", (event) => {
   if (event.key == "ArrowUp") {
     direction = "up";
@@ -99,3 +103,28 @@ addEventListener("keydown", (event) => {
     // console.log(direction);
   }
 });
+
+startButton.addEventListener("click", () => {
+  modal.style.display = "none";
+  intervalId = setInterval(() => {
+    render();
+  }, 300);
+});
+
+restartButton.addEventListener("click", restartGame);
+
+function restartGame() {
+  blocks[`${food.x}-${food.y}`].classList.remove("food");
+  modal.style.display = "none";
+  snake.forEach((segment) => {
+    const snakeBody = blocks[`${segment.x}-${segment.y}`];
+    if (snakeBody) snakeBody.classList.remove("fill");
+  });
+  snake = [{ x: 3, y: 5 }];
+  direction = "right";
+  food = {
+    x: Math.floor(Math.random() * rows),
+    y: Math.floor(Math.random() * cols),
+  };
+  intervalId = setInterval(() => render(), 300);
+}
