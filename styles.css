@@ -1,0 +1,135 @@
+:root {
+  --bg: #0a0a0a;
+  --card-bg: #141414;
+  --text-main: #ffffff;
+  --text-dim: #888888;
+  --accent: #3b82f6;
+  --border: #262626;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-main);
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  padding-bottom: 100px;
+}
+
+/* Navigation */
+nav {
+  padding: 2rem 0;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.github-link {
+  text-decoration: none;
+  color: var(--text-dim);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 35px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  max-width: 260px;
+}
+
+/* Header */
+header {
+  width: 90%;
+  max-width: 1100px;
+  margin: 4rem auto 2rem auto;
+}
+
+header h1 {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -2px;
+  margin-bottom: 1rem;
+}
+
+header p {
+  color: var(--text-dim);
+  max-width: 500px;
+  font-size: 1.1rem;
+}
+
+/* Grid Layout */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Card Styling */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  background: #1a1a1a;
+}
+
+.tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.5px;
+  width: fit-content;
+}
+
+.card p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  header {
+    margin-top: 2rem;
+  }
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}

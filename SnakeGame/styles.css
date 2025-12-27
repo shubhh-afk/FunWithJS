@@ -19,7 +19,7 @@ html {
 
 :root {
   /* Bg primary color */
-  --bg-primary-color: #0c0c0c;
+  --bg-primary-color: #0a0a0a;
   --bg-fill-color: #e8f3e2;
   --bg-food-color: rgb(201, 1, 1);
   /* text primary color */
@@ -57,7 +57,7 @@ section {
   padding: var(--space-2xl);
   display: flex;
   flex-direction: column;
-  background-color: #222222;
+  background-color: #0a0a0a;
   gap: var(--space-lg);
 }
 
